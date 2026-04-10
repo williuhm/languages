@@ -1,6 +1,8 @@
 /*
     Ok I assume this is the difficult part.
 
+    It changes memory addresses every run.
+
     Nope, this is too short as well... Guess
     it might be a C thing.
 
