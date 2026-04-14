@@ -1,0 +1,26 @@
+/************************TRICK HEADER*************************
+PURPOSE:
+    (S_define file for SIM_cannon_analytic)
+LIBRARY DEPENDENCIES:
+    (
+      (/data/wlister/GitHub/learning/Trick/models/cannon/cannon.cpp)
+    )
+*************************************************************/
+
+#include "sim_objects/default_trick_sys.sm"
+##include "/data/wlister/GitHub/learning/Trick/models/cannon/cannon.hh"
+
+class CannonSimObject : public Trick::SimObject {
+
+    public:
+        CANNON cannon;
+
+        CannonSimObject() {
+            ("default_data") cannon.cannon_default_data() ;
+            ("initialization") cannon.cannon_init() ;
+            (0.01, "scheduled") cannon.cannon_analytic() ;
+            ("shutdown") cannon.cannon_shutdown() ;
+        }
+} ;
+
+CannonSimObject dyn ;
