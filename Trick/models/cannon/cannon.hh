@@ -22,8 +22,14 @@ class CANNON {
 
         int cannon_default_data();
         int cannon_init();
-        int cannon_analytic();
         int cannon_shutdown();
+
+        // Analytic Simulation
+        int cannon_analytic();
+
+        // Numeric Simulation
+        int cannon_deriv();
+        int cannon_integ();
 };
 
 #endif

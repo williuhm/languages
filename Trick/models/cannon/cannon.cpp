@@ -1,7 +1,9 @@
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 #include "cannon.hh"
 #include "trick/exec_proto.h"
+#include "trick/integrator_c_intf.h"
 using namespace std;
 
 
@@ -34,6 +36,19 @@ int CANNON::cannon_init() {
     return 0;
 }
 
+int CANNON::cannon_shutdown() {
+    double t = exec_get_sim_time();
+    cout << "========================================\n";
+    cout << "      Cannon Ball State at Shutdown     \n";
+    cout << "IMPACT: t = " << t << "\n";
+    cout << "pos = [" << pos[0] << ", " << pos[1] << "]\n";
+    cout << "vel = [" << vel[0] << ", " << vel[1] << "]\n";
+    cout << "========================================\n";
+    return 0;
+}
+
+/******************** Analytic Simulation ********************/
+
 int CANNON::cannon_analytic() {
     acc[0] = 0.00;
     acc[1] = -9.81;
@@ -49,6 +64,7 @@ int CANNON::cannon_analytic() {
         vel[1] = 0.0;
         if ( !impact ) {
             impact = 1;
+            cout << setprecision(9);
             cout << "\n\n t = " << impactTime << ", pos[0] = " << pos[0] << "\n";
         }
     }
@@ -61,13 +77,47 @@ int CANNON::cannon_analytic() {
     return 0 ;
 }
 
-int CANNON::cannon_shutdown() {
-    double t = exec_get_sim_time();
-    cout << "========================================\n";
-    cout << "      Cannon Ball State at Shutdown     \n";
-    cout << "IMPACT: t = " << t << "\n";
-    cout << "pos = [" << pos[0] << ", " << pos[1] << "]\n";
-    cout << "vel = [" << vel[0] << ", " << vel[1] << "]\n";
-    cout << "========================================\n";
+/******************** Numeric Simulation ********************/
+
+int CANNON::cannon_deriv() {
+    if (!impact) {
+        acc[0] = 0.0;
+        acc[1] = -9.81;
+    } else {
+        acc[0] = 0.0;
+        acc[1] = 0.0;
+    }
     return 0;
+}
+
+int CANNON::cannon_integ() {
+    int ipass;
+
+    load_state(
+        &pos[0] ,
+        &pos[1] ,
+        &vel[0] ,
+        &vel[1] ,
+        NULL
+    );
+
+    load_deriv(
+        &vel[0] ,
+        &vel[1] ,
+        &acc[0] ,
+        &acc[1] ,
+        NULL
+    );
+
+    ipass = integrate();
+
+    unload_state(
+        &pos[0] ,
+        &pos[1] ,
+        &vel[0] ,
+        &vel[1] ,
+        NULL
+    );
+
+    return ipass;
 }
