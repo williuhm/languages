@@ -1,5 +1,8 @@
-#ifndef CANNON_HH
-#define CANNON_HH
+/*************************************************************************
+PURPOSE: (Represent the state and initial conditions of a cannonball)
+**************************************************************************/
+#ifndef CANNON_H
+#define CANNON_H
 
 class CANNON {
     public:
