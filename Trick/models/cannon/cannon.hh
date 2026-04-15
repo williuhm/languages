@@ -4,6 +4,8 @@ PURPOSE: (Represent the state and initial conditions of a cannonball)
 #ifndef CANNON_H
 #define CANNON_H
 
+#include "trick/regula_falsi.h"
+
 class CANNON {
     public:
         double pos0[2];     // *i m Init position of cannonball.
@@ -20,6 +22,8 @@ class CANNON {
         int impact;         // -- Has impact occured?
         double impactTime;  // s Time of Impact.
 
+        REGULA_FALSI rf ;   // -- Numeric Simulation
+
         int cannon_default_data();
         int cannon_init();
         int cannon_shutdown();
@@ -30,6 +34,7 @@ class CANNON {
         // Numeric Simulation
         int cannon_deriv();
         int cannon_integ();
+        double cannon_impact();
 };
 
 #endif

@@ -21,6 +21,7 @@ class CannonSimObject : public Trick::SimObject {
             ("derivative") cannon.cannon_deriv() ;
             ("integration") trick_ret= cannon.cannon_integ() ;
             ("shutdown") cannon.cannon_shutdown() ;
+            ("dynamic_event") cannon.cannon_impact() ;
         }
 } ;
 

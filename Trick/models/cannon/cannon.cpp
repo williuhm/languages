@@ -33,6 +33,8 @@ int CANNON::cannon_init() {
     impact = 0;
     impactTime = 0.0;
 
+    cout << setprecision(9);
+
     return 0;
 }
 
@@ -64,7 +66,6 @@ int CANNON::cannon_analytic() {
         vel[1] = 0.0;
         if ( !impact ) {
             impact = 1;
-            cout << setprecision(9);
             cout << "\n\n t = " << impactTime << ", pos[0] = " << pos[0] << "\n";
         }
     }
@@ -120,4 +121,23 @@ int CANNON::cannon_integ() {
     );
 
     return ipass;
+}
+
+double CANNON::cannon_impact() {
+    double tgo; /* time-to-go */
+    double now; /* current integration time. */
+    
+    rf.error = pos[1] ;                     /* Specify the event boundary. */
+    now = get_integ_time() ;                /* Get the current integration time */
+    tgo = regula_falsi( now, &rf ) ;        /* Estimate remaining integration time. */ 
+    if (tgo == 0.0) {                       /* If we are at the event, it's action time! */
+        now = get_integ_time() ;
+        reset_regula_falsi( now, &rf ) ; 
+        impact = 1 ;
+        impactTime = now ;
+        vel[0] = 0.0 ; vel[1] = 0.0 ;
+        acc[0] = 0.0 ; acc[1] = 0.0 ;
+        cout << "\n\nIMPACT: t = " << impactTime << ", pos[0] = " << pos[0] << "\n\n";
+    }
+    return (tgo) ;
 }
