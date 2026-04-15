@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<trickView>
+    <cyclePeriod>0.1</cyclePeriod>
+    <variable>
+        <name>dyn.cannon.pos[0]</name>
+        <tvDouble>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:double">0.0</value>
+            <format>Decimal</format>
+        </tvDouble>
+        <state>Valid</state>
+        <units>m</units>
+    </variable>
+    <variable>
+        <name>dyn.cannon.pos[1]</name>
+        <tvDouble>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:double">0.0</value>
+            <format>Decimal</format>
+        </tvDouble>
+        <state>Valid</state>
+        <units>m</units>
+    </variable>
+    <variable>
+        <name>dyn.cannon.vel[0]</name>
+        <tvDouble>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:double">43.30127018922194</value>
+            <format>Decimal</format>
+        </tvDouble>
+        <state>Valid</state>
+        <units>m/s</units>
+    </variable>
+    <variable>
+        <name>dyn.cannon.vel[1]</name>
+        <tvDouble>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:double">25.0</value>
+            <format>Decimal</format>
+        </tvDouble>
+        <state>Valid</state>
+        <units>m/s</units>
+    </variable>
+</trickView>
