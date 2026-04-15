@@ -6,3 +6,6 @@
 
 # Unignore all dirs
 !*/
+
+# Unignore S_define files
+!S_define
