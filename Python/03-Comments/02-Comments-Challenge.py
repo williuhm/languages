@@ -12,7 +12,7 @@
 """
 
 # Write a single-line comment
-# this is a comment
+# This is a comment
 
 # Comment out this line so it does not run:
 #print("This should not run")
