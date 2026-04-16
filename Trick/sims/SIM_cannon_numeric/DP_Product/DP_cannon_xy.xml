@@ -10,7 +10,7 @@
             <title>Plot</title>
             <curve>
                 <var units="m">dyn.cannon.pos[0]</var>
-                <var symbol_size="Tiny" symbol_style="Square" units="m">dyn.cannon.pos[1]</var>
+                <var units="m">dyn.cannon.pos[1]</var>
             </curve>
         </plot>
     </page>
