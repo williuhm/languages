@@ -13,7 +13,7 @@
 
 int main() {
     // 1) Print "Hello World!" with a new line
-    printf("Hello world!\n");
+    printf("Hello World!\n");
 
     // 2) Print "I am learning C."
     printf("I am learning C.");
