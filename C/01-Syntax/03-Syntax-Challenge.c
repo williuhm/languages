@@ -19,4 +19,3 @@ int main() {
     // 3) End the program with return 0;
     return 0;
 }
-
